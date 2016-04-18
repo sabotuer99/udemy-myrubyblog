@@ -1,0 +1,263 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'SQL_ASCII';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE categories (
+    id integer NOT NULL,
+    category_name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE posts (
+    id integer NOT NULL,
+    title character varying,
+    body text,
+    category_id integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+--
+-- Name: tests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tests (
+    id integer NOT NULL,
+    txt character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tests_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tests_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tests_id_seq OWNED BY tests.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tests ALTER COLUMN id SET DEFAULT nextval('tests_id_seq'::regclass);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY categories (id, category_name, created_at, updated_at) FROM stdin;
+22	News	2016-04-07 17:44:19.409463	2016-04-07 17:44:19.409463
+23	Tutorials	2016-04-07 17:44:25.827464	2016-04-07 17:44:25.827464
+24	Programming	2016-04-07 17:44:31.884806	2016-04-07 17:44:31.884806
+25	Design	2016-04-07 17:44:36.966883	2016-04-07 17:44:36.966883
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 25, true);
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY posts (id, title, body, category_id, author_id, created_at, updated_at) FROM stdin;
+3	Our third post	Blah blah blah	23	\N	2016-04-07 18:32:07.453941	2016-04-07 18:32:07.453941
+4	Yet another post	blah blah blah balh blah blahladiaspdofispdifpidpifsdf	22	\N	2016-04-07 19:21:23.666358	2016-04-07 19:21:23.666358
+6	Test flash message	blah blah yadda yadda	24	\N	2016-04-07 19:25:23.41691	2016-04-07 19:25:23.41691
+7	New post	some more blahdey blah	23	\N	2016-04-07 19:26:54.980132	2016-04-07 19:26:54.980132
+2	Our second post updated	This is some sample test for our second post	23	\N	2016-04-07 18:19:41.488187	2016-04-07 19:36:41.557002
+10	Hello There	is there anybody in there?	22	\N	2016-04-07 19:29:29.948131	2016-04-07 19:37:43.513187
+8	This got blown up	BOOM	\N	\N	2016-04-07 19:29:15.039373	2016-04-07 19:37:59.497262
+9	How to make friends and influence people	...	\N	\N	2016-04-07 19:29:20.892286	2016-04-07 19:38:24.92864
+1	This is the updated title TROGDAR	THE BURNINATOR	22	\N	2016-04-07 18:19:13.259894	2016-04-07 19:39:54.107811
+\.
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('posts_id_seq', 12, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160407161132
+20160407161515
+20160407172628
+20160407173242
+\.
+
+
+--
+-- Data for Name: tests; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY tests (id, txt, created_at, updated_at) FROM stdin;
+1	This is annoying	2016-04-07 17:27:04.000316	2016-04-07 17:27:04.000316
+\.
+
+
+--
+-- Name: tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('tests_id_seq', 1, true);
+
+
+--
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tests
+    ADD CONSTRAINT tests_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
