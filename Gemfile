@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 #user Rails 3 style attr_accessible
 gem 'protected_attributes'
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
