@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>My Ruby Blog</title>
+  <link href="//fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,7 +12,37 @@
 <% flash.each do |key, value| %>
 <p><%= value %></p>
 <% end %>
-<%= yield %>
+
+
+
+<div id="wrapper">
+  <%= render '/partials/header' %>
+	
+	
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+			  
+				<div id="content">
+				  <%= yield %>
+				  <div style="clear: both;">&nbsp;</div>
+				</div>
+				<!-- end #content -->
+				
+				<%= render '/partials/sidebar' %>
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+	<div id="footer">
+		<p>&copy; 2013, My Ruby Blog - Sample Project</p>
+	</div>
+	<!-- end #footer -->
+</div>
+
+
+
 
 </body>
 </html>

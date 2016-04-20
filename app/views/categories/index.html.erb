@@ -1,6 +1,9 @@
+<div class="post">
 <h1>Categories</h1>
 <ul>
     <% @categories.each do |cat| %>
        <li><%= link_to cat.category_name, cat %></li> 
     <% end %>
 </ul>
+</div>
+
