@@ -1,5 +1,13 @@
 ActiveAdmin.register Post do
-
+    menu label: "Blog Posts"
+    index do
+        column :title
+        column "Author", :admin_user
+        column :category
+        column :created_at
+        actions
+    end
+    
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

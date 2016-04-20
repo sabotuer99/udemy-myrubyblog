@@ -1,7 +1,32 @@
 <div class="post">
 <h1><%= @post.title %></h1>
 <small><%= @post.created_at.strftime("%b %d. %Y") %></small>
+<p>Created By: <%= @post.admin_user.fullname %></p>
 <p><%= @post.body %></p>
 <p>Category: <%= link_to @post.category.category_name, @post.category %></p>
 <p><%= link_to "Back", posts_path %></p>
+<hr>
+<h3>Add a Comment</h3>
+<%= form_for @comment do |f| %>
+    <%= f.hidden_field :post_id %>
+    
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+    </p>
+    <p>
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+    </p>
+    <p>
+        <%= f.submit "Post Comment" %>
+    </p>
+<% end %>
+<br/>
+<%= render partial: 'partials/comment', collection: @post.comments %>
+
 </div>

@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ $color1: hotpink;
+ $color2:  pink;
  
 body {
 	margin: 0;
@@ -21,6 +23,10 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	color: #6F6F6F;
+}
+
+#q_title_or_body_contains{
+	width: 180px;
 }
 
 strong {
@@ -58,7 +64,7 @@ ul, ol {
 
 a {
 	text-decoration: underline;
-	color: #D93544;
+	color: $color1;
 }
 
 a:hover {
@@ -105,11 +111,11 @@ a:hover {
 	font-family: 'Abel', sans-serif;
 	font-size: 3.8em;
 	font-weight: bold;
-	color: #D43442;
+	color: $color1;
 }
 
 #logo h1 a {
-	color: #D43442;
+	color: $color1;
 }
 
 #logo h1 span {
@@ -166,7 +172,7 @@ a:hover {
 	width: 50px;
 	height: 26px;
 	border: none;
-	background: #D93544;
+	background: $color1;
 	color: #FFFFFF;
 }
 
@@ -177,7 +183,7 @@ a:hover {
 	height: 125px;
 	margin: 0 auto;
 	padding: 0;
-	background: #D43442;
+	background: $color1;
 }
 
 #menu ul {
@@ -207,7 +213,7 @@ a:hover {
 }
 
 #menu a:hover, #menu .current_page_item a {
-	background: #A32833;
+	background:  $color2;
 	text-decoration: none;
 }
 
@@ -288,7 +294,7 @@ a:hover {
         padding:5px;
         background:black;
         color:#fff;
-        border-left:5px #D93544 solid;
+        border-left:5px $color1 solid;
 }
 
 .links a {
@@ -415,3 +421,7 @@ a:hover {
 }
 
 form label{width:110px;display:inline-block;}
+
+.pop{
+	color: $color1 !important;
+}

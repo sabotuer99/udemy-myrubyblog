@@ -9,9 +9,7 @@
 </head>
 <body>
 
-<% flash.each do |key, value| %>
-<p><%= value %></p>
-<% end %>
+
 
 
 
@@ -24,6 +22,10 @@
 			<div id="page-bgbtm">
 			  
 				<div id="content">
+					<% flash.each do |key, value| %>
+						<p><%= value %></p>
+					<% end %>
+
 				  <%= yield %>
 				  <div style="clear: both;">&nbsp;</div>
 				</div>
