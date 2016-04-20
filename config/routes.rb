@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'pages/about'
+
+  get 'pages/contact'
+
+  get 'pages/resources'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'categories/index'
@@ -10,6 +16,10 @@ Rails.application.routes.draw do
   get 'categories/show'
 
   get 'home/index'
+  
+  get '/about' => 'pages#about'
+  get '/contact' => 'pages#contact'
+  get '/resources' => 'pages#resources'
   
   resources :posts
   resources :categories
