@@ -8,6 +8,7 @@ default: &default
   adapter: sqlite3
   pool: 5
   timeout: 5000
+  encoding: sql_ascii
 
 development:
   <<: *default
@@ -23,7 +24,7 @@ development:
 test:
   <<: *default
   adapter: postgresql
-  database: myrubyblog
+  database: myrubyblog_test
   username: postgres
   password: 1234
   host: localhost
